@@ -3,4 +3,4 @@ Commands used in the metagenomics pipelines :
 2. Assembling with MEGAHIT
 3. Diversity with inStrain
 4. Gene annotation with prodigal v2.6.3-EggNOG-Mapper v2
-5. Resistance gene prediction with DeepArg
+5. Antibiotic resistance genes prediction with DeepArg
