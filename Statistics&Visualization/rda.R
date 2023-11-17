@@ -23,10 +23,10 @@ cols = c(pal3,pal2)
 mypalette <- colorRampPalette(pal)(5)
 
 #### 
-load('/Users/naima/projet_cholera_sept2022/oct_2022/rda_oct/rda_pca_hellinger/v5_agecontinue/df.all.subset.RData')
+load('~/df.all.subset.RData')
 df.all.subset$Sample=rownames(df.all.subset)
 
-load('/Users/naima/projet_cholera_sept2022/fev_2023/metadata_v1/metadata_all.RData')
+load('~/metadata_all.RData')
 
 df_list <- list(df.all.subset, metadata_all)      
 
