@@ -4,6 +4,7 @@
 
 
 library(wesanderson)
+library(purrr)
 library(forcats)
 library(tidyverse)
 library(vegan)
