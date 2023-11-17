@@ -2,4 +2,4 @@
 #### Scripts coding : 
 * Ordinations
 * MAGs and GLMMs
-* visualization
+* Visualization
