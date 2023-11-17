@@ -1,6 +1,6 @@
 
 #####
-###### Bash scripts for metagenomics reads analyses
+###### Bash scripts for metagenomics reads analysis
 
 ### Reads taxonomic annotation
 ### kraken on raw reads
