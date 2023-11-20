@@ -27,9 +27,9 @@ mypalette <- colorRampPalette(pal)(5)
 load('~/df.all.subset.RData')
 df.all.subset$Sample=rownames(df.all.subset)
 
-load('~/metadata_all.RData')
+patient_antibio=read.csv('~/metadata_all.csv')
 
-df_list <- list(df.all.subset, metadata_all)      
+df_list <- list(df.all.subset, patient_antibio)      
 
 df.rda1=df_list %>% reduce(inner_join, by='Sample')  #full_join
 
