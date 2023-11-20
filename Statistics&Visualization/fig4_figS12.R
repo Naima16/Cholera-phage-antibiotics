@@ -122,10 +122,11 @@ PT = dunnTest(phage_VC_ratio~ICE ,
 ####
 ########
 ## add dehydration
-load('~/my_metadata1.antibio.RData')
+
+patient_metadata=read.csv('~/metadata.csv')
 colnames(df.all)[1]='Sample'
 
-df.all.dehyd=merge(df.all,my_metadata1.antibio,by='Sample')
+df.all.dehyd=merge(df.all,patient_metadata,by='Sample')
 
 levels (df.all.dehyd$ICE)[levels (df.all.dehyd$ICE) == 'No_ICE'] <- 'ICE-'
 levels (df.all.dehyd$Dehydration_Status)[levels (df.all.dehyd$Dehydration_Status) == '1'] <- 'Mild'
