@@ -14,19 +14,15 @@ library(cowplot)
 library(ggpubr)
 library(interactions)
 
+### SNVs file from inStrain
 load('~/snv.filter3.biallelic.RData')
 
 ##load antibio
 load('~/metadata_all.RData')
 
-### SNVs file from inStrain
-snv.filter3.biallelic[snv.filter3.biallelic$sample=='1331650',]
-
 # merge frames together
 df.all=df_list %>% reduce(inner_join, by='Sample') 
 df.all=merge(snv.filter3.biallelic,metadata_all,by='Sample')
-
-
 
 ## remove antibio outliers
 df.all.out=df.all[!df.all$Sample %in% c('1394550','D17181815','1319650','D02182446','D17181817','D05181982'), ]
@@ -36,7 +32,6 @@ N_mut=df.all.out[df.all.out$mutation_type=='N' & df.all.out$var_freq>0.1,]  #auc
 counts.mut <- ddply(N_mut, .(N_mut$Sample), nrow)
 colnames(counts.mut)=c('Sample','SNV_nb')
 dim(counts.mut)
-
 
 ##add sxt profile
 load('~/breadth.all.RData')
@@ -60,11 +55,10 @@ df.species.otu.comp.otu_vc_icp1$Sample=rownames(df.species.otu.comp.otu_vc_icp1)
 
 df.all=merge(df.species.otu.comp.otu_vc_icp1,df.3,by='Sample')
 
-
 df.all$CIP=as.numeric(df.all$CIP)
 
+### GLMMs
 
-###glmm
 datsc=df.all
 pvar1='ICP1'
 pvar2='Vc'
