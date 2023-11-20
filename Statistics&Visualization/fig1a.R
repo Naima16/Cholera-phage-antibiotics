@@ -17,31 +17,33 @@ cols = c(pal3,pal2)
 
 mypalette <- colorRampPalette(pal)(5)
 
+### species abundances
 load('~/df.all.subset.RData')
 df.all.subset$Sample=rownames(df.all.subset)
 
+### patient metadata and antibiotics concentrations
 load('~/metadata_all.RData')
 
 df_list <- list(df.all.subset, metadata_all)      
 
-df.MFA1=df_list %>% reduce(inner_join, by='Sample')  #full_join
+df1=df_list %>% reduce(inner_join, by='Sample')  #full_join
 
-##remove antbx outliers
-df.MFA=df.MFA1[!df.MFA1$Sample %in% c('1331650','1394550','D17181815','1319650','D02182446','D17181817','D05181982'),]
+## remove antbx outliers
+df2=df1[!df.MFA1$Sample %in% c('1331650','1394550','D17181815','1319650','D02182446','D17181817','D05181982'),]
 
 
-df.rda=df.MFA[,colnames(df.MFA)%in% c('Vibrio.cholerae','Escherichia.coli','Bacteroides.vulgatus','Bifidobacterium.longum','Shigella.flexneri','Bifidobacterium.breve','Streptococcus.mitis',
+df.rda=df2[,colnames(df.MFA)%in% c('Vibrio.cholerae','Escherichia.coli','Bacteroides.vulgatus','Bifidobacterium.longum','Shigella.flexneri','Bifidobacterium.breve','Streptococcus.mitis',
                                       'ICP1','ICP2','ICP3','Dehydration_Status','AZI','DOX','CIP','Collection_Month','Area_Code','Age_in_Years',
                                       'Duration_of_Dirrhoea_in_Hrs',"Sex",'Nature_of_Stool')]
 
 rownames(df.rda)=df.MFA$Sample
 
-##change the ref level in prder to plot the dehydration=1 (end of infection) in the rda, the reference is not plotted
+## change the ref level in prder to plot the dehydration=1 (end of infection) in the rda, the reference is not plotted
 levels (df.rda$Dehydration_Status)[levels (df.rda$Dehydration_Status) == '1'] <- 'Mild'
 levels (df.rda$Dehydration_Status)[levels (df.rda$Dehydration_Status) == '2'] <- 'Moderate'
 levels (df.rda$Dehydration_Status)[levels (df.rda$Dehydration_Status) == '3'] <- 'Severe'
 
-#change the ref level in prder to plot the dehydration=1 (end of infection) in the rda, the reference is not plotted
+# change the ref level in prder to plot the dehydration=1 (end of infection) in the rda, the reference is not plotted
 df.rda$Dehydration_Status <- factor(df.rda$Dehydration_Status, levels=c('Severe','Moderate', 'Mild'))
 
 
