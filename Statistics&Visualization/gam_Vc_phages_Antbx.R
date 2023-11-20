@@ -8,8 +8,7 @@ library(bbmle)
 library(itsadug)
 
 ####. rel abundances
-load('~/df.species.otu.comp.otu_vc_icp1.RData')
-
+df.species.otu.comp.otu_vc_icp1=read.csv('~/df.species.otu.comp.otu_vc_icp1.csv')
 ### metadata+antibio+AMR
 patient_antibio=read.csv('~/metadata_all.csv')
 
