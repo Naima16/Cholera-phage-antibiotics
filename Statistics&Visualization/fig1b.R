@@ -22,8 +22,8 @@ df.all.vcplus.ratio=merge(df.species.otu.comp.otu_vc_icp1[,c('Sample','Vc','ICP1
 dim(df.all.vcplus.ratio)  ## 323  4
 
 ## patient metadata
-load('~/my_metadata1.antibio.RData')
-df.all.vcplus.ratio.met=merge(df.all.vcplus.ratio,my_metadata1.antibio,by='Sample')
+patient_metadata=read.csv('~/metadata.csv')
+df.all.vcplus.ratio.met=merge(df.all.vcplus.ratio,patient_metadata,by='Sample')
 
 
 levels (df.all.vcplus.ratio.met$Dehydration_Status)[levels (df.all.vcplus.ratio.met$Dehydration_Status) == '1'] <- 'Mild'
