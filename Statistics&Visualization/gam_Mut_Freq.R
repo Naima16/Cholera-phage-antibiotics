@@ -40,8 +40,6 @@ df.all.sxt1=df.all.sxt[df.all.sxt$mutation_type %in% c('I','N','S'),]
 df.all.sxt1$ICE.by.mut <- with(df.all.sxt1, interaction(mutation_type,ICE,
                                                          drop=TRUE)) 
 
-
-
 ### GAMs
 mod1 <- gam(mean_freq ~ s(ICP1,by=ICE.by.mut) ,
               data=df.all.sxt1,
