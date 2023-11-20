@@ -14,9 +14,9 @@ freq.mut <- ddply(snv.filter3.biallelic, .(snv.filter3.biallelic$Sample, snv.fil
 
 colnames(freq.mut)=c('Sample','mutation_type','mean_freq')
 
-load('~/metadata_v1/metadata_all.RData')
+patient_antibio=read.csv('~/metadata_all.csv')
 
-df.all=merge(freq.mut,metadata_all,by='Sample')
+df.all=merge(freq.mut,patient_antibio,by='Sample')
 
 ##remove antibio outliers
 df.all.out=df.all[!df.all$Sample %in% c('1331650','1394550','D17181815','1319650','D02182446','D17181817','D05181982'), ]
