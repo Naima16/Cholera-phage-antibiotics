@@ -12,6 +12,7 @@ df_ratio=ICP_VC_qpcr[,c('Sample_ID','qPCR_ICP1_PFUml_CT28','qPCR_tcpA_CFUml_CT28
 
 colnames(df_ratio)[1]='Sample'
 
+load(~/metadata_all.RData')
 df.all=merge(df_ratio,metadata_all,by='Sample')
 df.all$CIP=as.numeric(df.all$CIP)
 
