@@ -22,9 +22,9 @@ load('~/df.all.subset.RData')
 df.all.subset$Sample=rownames(df.all.subset)
 
 ### patient metadata and antibiotics concentrations
-load('~/metadata_all.RData')
+patient_antibio=read.csv('~/metadata_all.csv')
 
-df_list <- list(df.all.subset, metadata_all)      
+df_list <- list(df.all.subset, patient_antibio)      
 
 df1=df_list %>% reduce(inner_join, by='Sample')  #full_join
 
