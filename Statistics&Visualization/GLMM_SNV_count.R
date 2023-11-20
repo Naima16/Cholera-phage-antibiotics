@@ -18,34 +18,29 @@ library(interactions)
 load('~/snv.filter3.biallelic.RData')
 
 ##load antibio
-load('~/metadata_all.RData')
+patient_antibio=read.csv('~/metadata_all.csv')
 
 # merge frames together
 df.all=df_list %>% reduce(inner_join, by='Sample') 
-df.all=merge(snv.filter3.biallelic,metadata_all,by='Sample')
+df.all=merge(snv.filter3.biallelic,patient_antibio,by='Sample')
 
 ## remove antibio outliers
 df.all.out=df.all[!df.all$Sample %in% c('1394550','D17181815','1319650','D02182446','D17181817','D05181982'), ]
 
-N_mut=df.all.out[df.all.out$mutation_type=='N' & df.all.out$var_freq>0.1,]  #aucun glmm n'est significant
+N_mut=df.all.out[df.all.out$mutation_type=='N' & df.all.out$var_freq>0.1,]
 
 counts.mut <- ddply(N_mut, .(N_mut$Sample), nrow)
 colnames(counts.mut)=c('Sample','SNV_nb')
-dim(counts.mut)
 
 ##add sxt profile
 load('~/breadth.all.RData')
 names(breadth.all)[names(breadth.all)=="sample"] <- "Sample"
 
-df.patient=unique(df.all.out[,c('Sample',"CIP" , "CIP_AR"  , "CIP_AN" , "AZI"  ,                       
-                                "AZI_AR"  , "AZI_AN"   ,  "DOX" ,   "DOX_AR"      ,                
-                                "DOX_AN" )])
+df.patient=unique(df.all.out[,c('Sample',"CIP" , "AZI" , "DOX" )])
                   
-
 df.2=merge(counts.mut,df.patient,by='Sample')
 df.3=merge(df.2,breadth.all[,c('Sample','ICE')],by='Sample')
 df.3$ICE=as.factor(df.3$ICE)
-
 
 ### rel abundances of the dominant species 
 load('~/df.species.otu.comp.otu_vc_icp1.RData')
@@ -71,8 +66,6 @@ datsc[pvar2] <- lapply(df.all[pvar2],scale)
 datsc[pvar3] <- lapply(df.all[pvar3],scale)
 datsc[pvar4] <- lapply(df.all[pvar4],scale)
 datsc[pvar5] <- lapply(df.all[pvar5],scale)
-
-
 
 ## select which distribution between poisson, nbinom1 and nbinom2 is the best
 mod_all=glmmTMB(SNV_nb ~ ICP1  + Vc + CIP + AZI + DOX+
