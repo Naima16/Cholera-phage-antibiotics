@@ -15,7 +15,7 @@ library(ggpubr)
 library(interactions)
 
 ### SNVs file from inStrain
-load('~/snv.filter3.biallelic.RData')
+snv.filter3.biallelic=read.csv('~/snv.filter3.biallelic.csv')
 
 ##load antibio
 patient_antibio=read.csv('~/metadata_all.csv')
@@ -32,8 +32,8 @@ N_mut=df.all.out[df.all.out$mutation_type=='N' & df.all.out$var_freq>0.1,]
 counts.mut <- ddply(N_mut, .(N_mut$Sample), nrow)
 colnames(counts.mut)=c('Sample','SNV_nb')
 
-##add sxt profile
-load('~/breadth.all.RData')
+## add sxt profile
+breadth.all=read.csv('~/breadth.all.csv')
 names(breadth.all)[names(breadth.all)=="sample"] <- "Sample"
 
 df.patient=unique(df.all.out[,c('Sample',"CIP" , "AZI" , "DOX" )])
@@ -43,7 +43,7 @@ df.3=merge(df.2,breadth.all[,c('Sample','ICE')],by='Sample')
 df.3$ICE=as.factor(df.3$ICE)
 
 ### rel abundances of the dominant species 
-load('~/df.species.otu.comp.otu_vc_icp1.RData')
+df.species.otu.comp.otu_vc_icp1=read.csv('df.species.otu.comp.otu_vc_icp1.csv')
 ##########
 
 df.species.otu.comp.otu_vc_icp1$Sample=rownames(df.species.otu.comp.otu_vc_icp1)
