@@ -7,10 +7,10 @@ library(cowplot)
 library(ggplot2)
 
 #### loqd ICE profile
-load('~/breadth.all.RData')
+breadth.all=read.csv('~/breadth.all.csv')
 
 ### species composition
-load('~/df.species.otu_vc_icp1.RData')
+df.species.otu_vc_icp1=read.csv('~/df.species.otu_vc_icp1.csv')
 df.species.otu_vc_icp1$sample=rownames(df.species.otu_vc_icp1)
 
 df.all=merge(breadth.all,df.species.otu_vc_icp1[,c('sample','ICP1','ICP2','ICP3','Vc')],by='sample')
