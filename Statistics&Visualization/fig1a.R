@@ -18,7 +18,7 @@ cols = c(pal3,pal2)
 mypalette <- colorRampPalette(pal)(5)
 
 ### species abundances
-load('~/df.all.subset.RData')
+df.all.subset=read.csv('~/df.all.subset.csv')
 df.all.subset$Sample=rownames(df.all.subset)
 
 ### patient metadata and antibiotics concentrations
