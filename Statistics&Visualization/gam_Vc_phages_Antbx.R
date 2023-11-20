@@ -11,19 +11,13 @@ library(itsadug)
 load('~/df.species.otu.comp.otu_vc_icp1.RData')
 
 ### metadata+antibio+AMR
-load('~/metadata_all.RData')
-colnames(metadata_all)
+patient_antibio=read.csv('~/metadata_all.csv')
 
 ##########
 
 df.species.otu.comp.otu_vc_icp1$Sample=rownames(df.species.otu.comp.otu_vc_icp1)
 
-df_list <- list(df.species.otu.comp.otu_vc_icp1,metadata_all)      
-
-#merge all data frames together
-df.all=df_list %>% reduce(inner_join, by='Sample')  #full_join
-
-df.all=merge(df.species.otu.comp.otu_vc_icp1,metadata_all,by='Sample')
+df.all=merge(df.species.otu.comp.otu_vc_icp1,patient_antibio,by='Sample')
 colnames(df.all)
 dim(df.all)
 
