@@ -13,23 +13,21 @@ snv.filter3.biallelic=read.csv('~/snv.filter3.biallelic.csv')
 ### species composition
 df.all=read.csv('~/df.species.otu.comp.otu_vc_icp1.csv')
 
+## SXT profile
+breadth.all=read.csv('~/breadth.all.csv')
+
 ### mean mutation freq/sample
 freq.mut <- ddply(snv.filter3.biallelic, .(snv.filter3.biallelic$Sample, snv.filter3.biallelic$mutation_type), summarize,mean_freq=mean(var_freq))
 colnames(freq.mut)=c('Sample','mutation_type','mean_freq')
 
-## SXT profile
-breadth.all=read.csv('~/breadth.all.csv')
-
 df_list <- list(freq.mut,df.all[,c('Sample','ICP1')], breadth.all[,c('Sample','ICE')])      
 df.1=df_list %>% reduce(inner_join, by='Sample')  ## purr library
-
 
 df.1$ICE=as.factor(df.1$ICE)
 df.1$ICE <- factor(df.1$ICE, levels=c("No_ICE", "ind6","ind5"))
 
 df.2=df.1[df.1$mutation_type %in% c('N','S','I'),]
 df.2$mutation_type <- factor(df.2$mutation_type, levels=c("N", "S","I"))
-
 
 df.2=df.2 %>%
   mutate(icp1_abund = case_when(
