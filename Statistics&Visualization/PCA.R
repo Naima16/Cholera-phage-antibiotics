@@ -116,6 +116,7 @@ high_scor_sp_tax=merge(as.data.frame(high_scor_sp2),TAX1[rownames(TAX1)%in% high
 df.all.subset=df.4[,colnames(df.4)%in% c(high_scor_sp,'979525','979535','979533')]  
 ### save(df.all.subset,file='df.all.subset.RData')
 dim(df.all.subset)  ##344,37
+write.csv(df.all.subset,file='df.all.subset.csv',quote=F,row.names = F)
 
 ##change species name
 for (i in 1:dim(df.all.subset)[2])
