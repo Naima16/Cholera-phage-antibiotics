@@ -8,7 +8,8 @@ library(mgcv)
 library(itsadug)
 
 
-snv.filter3.biallelic=read.csv(~/snv.filter3.biallelic.csv')
+
+snv.filter3.biallelic=read.csv('~/snv.filter3.biallelic.csv',sep=',',header=T)
 freq.mut <- ddply(snv.filter3.biallelic, .(snv.filter3.biallelic$Sample, snv.filter3.biallelic$mutation_type), summarize,mean_freq=mean(var_freq))
 
 colnames(freq.mut)=c('Sample','mutation_type','mean_freq')
@@ -21,15 +22,14 @@ df.all=merge(freq.mut,patient_antibio,by='Sample')
 df.all.out=df.all[!df.all$Sample %in% c('1331650','1394550','D17181815','1319650','D02182446','D17181817','D05181982'), ]
 
 ### dominant species with rel abundances
-df.species.otu.comp.otu_vc_icp1=read.csv('~/df.species.otu.comp.otu_vc_icp1.csv')
+df.species.otu.comp.otu_vc_icp1=read.table('df.species.otu.comp.otu_vc_icp1.csv',sep=',',header=T)
 ##########
 
-df.species.otu.comp.otu_vc_icp1$Sample=rownames(df.species.otu.comp.otu_vc_icp1)
 df.all=merge(df.species.otu.comp.otu_vc_icp1[,c('Sample','Vc','ICP1','ICP2','ICP3')],df.all.out,by='Sample')
 
 ### add SXT status
 breadth.all=read.csv('~/breadth.all.csv')
-names(breadth.all)[names(breadth.all)=="sample"] <- "Sample"
+
 df.all.sxt=merge(df.all,breadth.all[,c('Sample','ICE')],by='Sample')
 df.all.sxt$ICE=as.factor(df.all.sxt$ICE)
 df.all.sxt$mutation_type=as.factor(df.all.sxt$mutation_type)
