@@ -15,10 +15,10 @@ library(ggpubr)
 library(interactions)
 
 ### SNVs file from inStrain
-snv.filter3.biallelic=read.csv('~/snv.filter3.biallelic.csv')
+snv.filter3.biallelic=read.csv('~/snv.filter3.biallelic.csv',sep=',',header=T)
 
 ##load antibio
-patient_antibio=read.csv('~/metadata_all.csv')
+patient_antibio=read.csv('~/metadata_all.csv',sep=',',header=T)
 
 # merge frames together
 df.all=df_list %>% reduce(inner_join, by='Sample') 
