@@ -25,7 +25,6 @@ mypalette <- colorRampPalette(pal)(5)
 
 #### 
 df.all.subset=read.csv('~/df.all.subset.csv')
-df.all.subset$Sample=rownames(df.all.subset)
 
 patient_antibio=read.csv('~/metadata_all.csv')
 
