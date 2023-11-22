@@ -11,10 +11,9 @@ ICP_VC_qpcr=read_excel('~/mHDM_Aggregate_9_12_23_Draft.xlsx',sheet='mHDM_VC_qPCR
 df_ratio=ICP_VC_qpcr[,c('Sample_ID','qPCR_tcpa_AvgCt','qPCR_tcpA_CFUml_CT28','qPCR_ICP1_AvgCt','qPCR_ICP1_PFUml_CT28')]
 
 ### species abundances
-df.species.otu.comp.otu_vc_icp1=read.csv('~/df.species.otu.comp.otu_vc_icp1.csv')
+df.species.otu.comp.otu_vc_icp1=read.table('~/df.species.otu.comp.otu_vc_icp1.csv',sep=',',header=T)
 
 colnames(df_ratio)[1]='Sample'
-df.species.otu.comp.otu_vc_icp1$Sample=rownames(df.species.otu.comp.otu_vc_icp1)
 
 ### plot
 comon_data=merge(df_ratio,df.species.otu.comp.otu_vc_icp1[,c('Sample','Vc','ICP1','ICP2','ICP3')],by='Sample')
