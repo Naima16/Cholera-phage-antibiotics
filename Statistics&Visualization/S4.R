@@ -16,7 +16,7 @@ df_ratio.vc=df_ratio[df_ratio$qPCR_tcpA_CFUml_CT28_num>0,]
 colnames(df_ratio.vc)[1]='Sample'
 
 ### patient metadata
-metadata=read.cav('~/metadata.csv')
+metadata=read.csv('~/metadata.csv')
 
 df_dehyd=merge(df_ratio.vc,metadata[,c('Sample','Dehydration_Status')])
 
