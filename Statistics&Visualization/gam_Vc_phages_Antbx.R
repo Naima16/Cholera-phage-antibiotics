@@ -8,29 +8,22 @@ library(bbmle)
 library(itsadug)
 
 ####. rel abundances
-df.species.otu.comp.otu_vc_icp1=read.csv('~/df.species.otu.comp.otu_vc_icp1.csv')
+df.species.otu.comp.otu_vc_icp1=read.table('df.species.otu.comp.otu_vc_icp1.csv',sep=',',header=T)
 ### metadata+antibio+AMR
 patient_antibio=read.csv('~/metadata_all.csv')
 
 ##########
 
-df.species.otu.comp.otu_vc_icp1$Sample=rownames(df.species.otu.comp.otu_vc_icp1)
-
 df.all=merge(df.species.otu.comp.otu_vc_icp1,patient_antibio,by='Sample')
-colnames(df.all)
-dim(df.all)
 
 df.all$CIP=as.numeric(df.all$CIP)
 
 ## remove antbx outliers 
 df.all.out=df.all[!df.all$Sample %in% c('1331650','1394550','D17181815','1319650','D02182446','D17181817','D05181982'), ]
 
-
 df.gam=df.all.out [,c('Sample','Vc','ICP1','ICP3','ICP2','CIP','AZI','DOX','Dehydration_Status')]
 
 ## GAMs with Vc as a function of ICP1+antibiotics (abundances from MG)
-library(mgcv)
-##df.gam[df.gam$Sample=='1331650',], il n'est pas ds la data !!!!!
 
 gam1 <- gam(Vc ~ s(ICP1)+s(AZI)+ te(ICP1,AZI)+
             s(Dehydration_Status,bs="re"),
@@ -86,8 +79,6 @@ r2(gam1)
 
 
 ###plot gam1 
-
-library(itsadug)
 
 pdf('fig2.pdf',width = 3.5,height = 2.7,pointsize = 8)
 par(mfrow=c(1,2),mar = c(4,4,1,0), cex = 0.7)
