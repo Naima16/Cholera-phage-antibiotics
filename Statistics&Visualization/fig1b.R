@@ -6,16 +6,14 @@ library(ggplot2)
 library(FSA)
 
 ##reads number to calculate icp1/vc ratio
-df.species.otu_vc_icp1=read.csv('~/df.species.otu_vc_icp1.csv')
+df.species.otu_vc_icp1=read.table('~/df.species.otu_vc_icp1.csv',sep=',',header=T)
 ## because of the ratio, discard null denumeratr
 df.species.otu_vc_icp1.Vcpos=df.species.otu_vc_icp1[df.species.otu_vc_icp1$Vc>0,]
 
 df.species.otu_vc_icp1.Vcpos$ICP1_VC_ratio=df.species.otu_vc_icp1.Vcpos$ICP1/df.species.otu_vc_icp1.Vcpos$Vc
-df.species.otu_vc_icp1.Vcpos$Sample=rownames(df.species.otu_vc_icp1.Vcpos)
 
 ##rel abundance
-df.species.otu.comp.otu_vc_icp1=read.csv('~/df.species.otu.comp.otu_vc_icp1.csv')
-df.species.otu.comp.otu_vc_icp1$Sample=rownames(df.species.otu.comp.otu_vc_icp1)
+df.species.otu.comp.otu_vc_icp1=read.table('~/df.species.otu.comp.otu_vc_icp1.csv',sep=',',header=T)
 
 df.all.vcplus.ratio=merge(df.species.otu.comp.otu_vc_icp1[,c('Sample','Vc','ICP1')],df.species.otu_vc_icp1.Vcpos[,c('Sample','ICP1_VC_ratio')],by='Sample')
 dim(df.all.vcplus.ratio)  ## 323  4
