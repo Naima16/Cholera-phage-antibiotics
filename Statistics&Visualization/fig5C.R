@@ -11,7 +11,7 @@ library(ggplot2)
 snv.filter3.biallelic=read.csv('~/snv.filter3.biallelic.csv')
 
 ### species composition
-df.all=read.csv('~/df.species.otu.comp.otu_vc_icp1.csv')
+df.all=read.table('df.species.otu.comp.otu_vc_icp1.csv',sep=',',header=T)
 
 ## SXT profile
 breadth.all=read.csv('~/breadth.all.csv')
