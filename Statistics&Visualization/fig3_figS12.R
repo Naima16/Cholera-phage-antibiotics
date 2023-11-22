@@ -6,14 +6,13 @@ library(ggpubr)
 library(cowplot)
 library(ggplot2)
 
-#### loqd ICE profile
-load('~/breadth.all.RData')
+#### load ICE profile
+breadth.all=read.csv('~/breadth.all.csv')
 
 ### species composition
-load('~/df.species.otu_vc_icp1.RData')
-df.species.otu_vc_icp1$sample=rownames(df.species.otu_vc_icp1)
+df.species.otu_vc_icp1=read.table('~/df.species.otu_vc_icp1.csv',sep=',',header=T)
 
-df.all=merge(breadth.all,df.species.otu_vc_icp1[,c('sample','ICP1','ICP2','ICP3','Vc')],by='sample')
+df.all=merge(breadth.all,df.species.otu_vc_icp1[,c('sample','ICP1','ICP2','ICP3','Vc')],by='Sample')
 df.all$ICP1_VC_ratio=df.all$ICP1/df.all$Vc
 
 df.all$ICE=as.factor(df.all$ICE)
@@ -122,10 +121,9 @@ PT = dunnTest(phage_VC_ratio~ICE ,
 ####
 ########
 ## add dehydration
-load('~/my_metadata1.antibio.RData')
-colnames(df.all)[1]='Sample'
+metadata=read.csv('~/metadata.csv')
 
-df.all.dehyd=merge(df.all,my_metadata1.antibio,by='Sample')
+df.all.dehyd=merge(df.all,metadata,by='Sample')
 
 levels (df.all.dehyd$ICE)[levels (df.all.dehyd$ICE) == 'No_ICE'] <- 'ICE-'
 levels (df.all.dehyd$Dehydration_Status)[levels (df.all.dehyd$Dehydration_Status) == '1'] <- 'Mild'
