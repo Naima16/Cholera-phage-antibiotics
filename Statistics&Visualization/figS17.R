@@ -17,7 +17,6 @@ colnames(freq.mut)=c('Sample','mutation_type','mean_freq')
 
 ##### per SXT+ or SXT-
 breadth.all=read.csv('~/breadth.all.csv')
-names(breadth.all)[names(breadth.all)=="sample"] <- "Sample"
 
 df.1=merge(freq.mut,breadth.all[,c('Sample','ICE')],by='Sample')
 df.1$ICE=as.factor(df.1$ICE)
