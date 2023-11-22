@@ -25,6 +25,8 @@ ARG_df=ARG_df[,colnames(ARG_df) != 'Sample']
 
 ### species composition for the most dominant species
 df.all.subset=read.csv('~/df.all.subset.csv')
+rownames(df.all.subset)=df.all.subset$Sample
+df.all.subset=df.all.subset[,colnames(df.all.subset) != 'Sample']
 
 mfa.df=merge(df.all.subset,ARG_df,by='row.names')
 rownames(mfa.df)=mfa.df$Row.names
