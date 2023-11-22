@@ -27,9 +27,9 @@ df_ratio$qPCR_Ratio_ICP1_VC_CT28=as.numeric(df_ratio$qPCR_Ratio_ICP1_VC_CT28)
 
 
 mydf_ratio_vcplus= df_ratio[df_ratio $qPCR_tcpA_CFUml_CT28>0 | df_ratio $qPCR_ICP1_PFUml_CT28>0 | df_ratio $qPCR_ICP2_PFUml_CT28>0 | df_ratio $qPCR_ICP3_PFUmlCT28>0,]
-colnames(mydf_ratio_vcplus)[1]='sample'
+colnames(mydf_ratio_vcplus)[1]='Sample'
 
-df.all=merge(mydf_ratio_vcplus,breadth.all,by='sample')
+df.all=merge(mydf_ratio_vcplus,breadth.all,by='Sample')
 
 df.all$ICE=as.factor(df.all$ICE)
 levels (df.all$ICE)[levels (df.all$ICE) == 'No_ICE'] <- 'ICE-'
@@ -117,9 +117,7 @@ phages
 ##########.  plot by dehydration
 
 my_metadata=read.csv('~/metadata.csv')
-colnames(my_metadata)[1]='sample'
-
-df.all.met=merge(df.all, my_metadata,by='sample')
+df.all.met=merge(df.all, my_metadata,by='Sample')
 
 levels (df.all.met$Dehydration_Status)[levels (df.all.met$Dehydration_Status) == '1'] <- 'Mild'
 levels (df.all.met$Dehydration_Status)[levels (df.all.met$Dehydration_Status) == '2'] <- 'Moderate'
