@@ -8,7 +8,7 @@ library(FSA)
 library(ggplot2)
 
 
-my_path='~/naima/cholera_project'
+my_path='/Users/naimamadi/cholera_project'
 df.species.otu_vc_icp1=('my_path/df.species.otu_vc_icp1.csv',sep=',',header=T)
 
 ## because of the ratio, discard null denumeratr
