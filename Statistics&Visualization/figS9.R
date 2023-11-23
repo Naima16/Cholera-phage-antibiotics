@@ -9,7 +9,7 @@ library(dplyr)
 library(cowplot)
 
 #### ARGs from deepARG
-all.arg=read.csv('/Users/naimamadi/cholera_sept_2023/data_tables/deeparg/merge_quant_subtype_deepARG.csv')
+all.arg=read.csv('/Users/naimamadi/cholera_sept_2023/data_tables/deeparg/merge_quant_subtype_deepARG.csv',check.names = F)
 
 names(all.arg)[names(all.arg)=="16s-NormalizedReadCount"] <- "NormalizedReadCount_16s"
 names(all.arg)[names(all.arg)=="ARG-group"] <- "ARG_group"
