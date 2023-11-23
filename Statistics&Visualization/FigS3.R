@@ -8,8 +8,7 @@ library(FSA)
 library(ggplot2)
 
 
-my_path='/Users/naimamadi/cholera_project'
-df.species.otu_vc_icp1=('my_path/df.species.otu_vc_icp1.csv',sep=',',header=T)
+df.species.otu_vc_icp1=('~/df.species.otu_vc_icp1.csv',sep=',',header=T)
 
 ## because of the ratio, discard null denumeratr
 df.species.otu_vc_icp1.Vcpos=df.species.otu_vc_icp1[df.species.otu_vc_icp1$Vc>0,]
@@ -38,7 +37,6 @@ df.all.vcplus.ratio.met$Dehydration_Status <- factor(df.all.vcplus.ratio.met$Deh
 
 
 #### 24h  dirrhoea treshold
-
 df.all.vcplus.ratio.met=df.all.vcplus.ratio.met %>%
   mutate(Diarrhea = case_when(
     Duration_of_Dirrhoea_in_Hrs>=24  ~ ">=24h",
@@ -46,7 +44,6 @@ df.all.vcplus.ratio.met=df.all.vcplus.ratio.met %>%
     Duration_of_Dirrhoea_in_Hrs<24~ "<24h"
   ))
 df.all.vcplus.ratio.met$Diarrhea=as.factor(df.all.vcplus.ratio.met$Diarrhea)
-
 
 vc_24=ggplot(df.all.vcplus.ratio.met , aes(x=Dehydration_Status,y=Vc)) +  #Dehydration_Status Duration_of_Dirrhoea_in_Hrs
   geom_boxplot(aes(fill=Dehydration_Status),width=0.5)+#,col=mut_type))+
@@ -56,7 +53,6 @@ vc_24=ggplot(df.all.vcplus.ratio.met , aes(x=Dehydration_Status,y=Vc)) +  #Dehyd
   stat_cor(size=3,label.x.npc = 'left',
            label.y.npc = 'top')+
   scale_fill_manual(values = c( "#FF0000" ,"#F2AD00","#34b1f0ff"))+
-  
   theme(axis.title=element_text(size=9),
         strip.text=element_text( size = 6),
         legend.position = 'none',#####'bottom',
@@ -72,7 +68,6 @@ df1=df.all.vcplus.ratio.met[df.all.vcplus.ratio.met$Diarrhea==">=24h",]
 
 kruskal.test(Vc~Dehydration_Status ,
              data=df1)
-
 PT = dunnTest(Vc~Dehydration_Status ,
               data=df1,
               method="bh")
@@ -80,8 +75,6 @@ PT
 
 ##<24h
 df2=df.all.vcplus.ratio.met[df.all.vcplus.ratio.met$Diarrhea=="<24h",]
-
-
 kruskal.test(Vc~Dehydration_Status ,
              data=df2)
 
@@ -115,7 +108,6 @@ df.all.vcplus.ratio.met=df.all.vcplus.ratio.met %>%
   ))
 df.all.vcplus.ratio.met$Diarrhea=as.factor(df.all.vcplus.ratio.met$Diarrhea)
 
-
 vc_72=ggplot(df.all.vcplus.ratio.met , aes(x=Dehydration_Status,y=Vc)) +  
   geom_boxplot(aes(fill=Dehydration_Status),width=0.5)+#,col=mut_type))+
   theme_bw()+
@@ -131,7 +123,6 @@ vc_72=ggplot(df.all.vcplus.ratio.met , aes(x=Dehydration_Status,y=Vc)) +
         axis.title.y= element_text(color = "black", size = 7.5),
         axis.text.y=element_text(size=5,hjust = 1))
 vc_72
-
 
 icp1_72=ggplot(df.all.vcplus.ratio.met , aes(x=Dehydration_Status,y=ICP1)) +  
   geom_boxplot(aes(fill=Dehydration_Status),width=0.5)+#,col=mut_type))+
@@ -159,7 +150,6 @@ dunnTest(Vc~Dehydration_Status ,
          data=df3,
          method="bh")
 
-
 ##<72h
 df4=df.all.vcplus.ratio.met[df.all.vcplus.ratio.met$Diarrhea=="<72h",]
 
@@ -169,7 +159,6 @@ PT = dunnTest(Vc~Dehydration_Status ,
               data=df4,
               method="bh")
 PT
-
 
 kruskal.test(ICP1~Dehydration_Status ,
              data=df4)
