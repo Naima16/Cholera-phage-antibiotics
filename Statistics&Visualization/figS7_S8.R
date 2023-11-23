@@ -9,8 +9,7 @@ library(ggpubr)
 library(cowplot)
 
 
-#### ARGs
-
+#### ARGs : antibiotics resistance genes table as predicted by deepARG
 all.arg=read.csv('~/merge_quant_subtype_deepARG.csv',check.names = F)
 
 names(all.arg)[names(all.arg)=="16s-NormalizedReadCount"] <- "NormalizedReadCount_16s"
