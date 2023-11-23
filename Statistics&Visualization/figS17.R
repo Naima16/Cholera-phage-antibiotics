@@ -26,7 +26,7 @@ df.2=df.1[df.1$mutation_type %in% c('N','S','I'),]
 df.2$mutation_type <- factor(df.2$mutation_type, levels=c("N", "S","I"))
 
 ####qPCR
-ICP_VC_qpcr=read_excel('/Users/naimamadi/cholera_sept_2023/data_tables/mHDM_Aggregate_9_12_23_Draft.xlsx',sheet='mHDM_VC_qPCR')
+ICP_VC_qpcr=read_excel('~/mHDM_Aggregate_9_12_23_Draft.xlsx',sheet='mHDM_VC_qPCR')
 df_ratio=ICP_VC_qpcr[,c('Sample_ID','qPCR_ICP1_PFUml_CT28','qPCR_tcpA_CFUml_CT28')]
 
 df_ratio[df_ratio=='NEG'] = '0'
