@@ -8,7 +8,7 @@ library(tidyr)
 library(dplyr)
 library(cowplot)
 
-#### ARGs from deepARG
+#### ARGs : antibiotics resistance genes table as predicted by deepARG
 all.arg=read.csv('/Users/naimamadi/cholera_sept_2023/data_tables/deeparg/merge_quant_subtype_deepARG.csv',check.names = F)
 
 names(all.arg)[names(all.arg)=="16s-NormalizedReadCount"] <- "NormalizedReadCount_16s"
