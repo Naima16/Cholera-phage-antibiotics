@@ -12,7 +12,7 @@ for(i in 1:dim(snv.all)[1])
 {
   nn=unlist(strsplit(as.character(snv.all[i,'scaffold']),"_"))[1]
   if (nn != 'phage') {
-    snv.all[i,'genome']='1458300'
+    snv.all[i,'genome']='1458300'  ### Vc
   } else {
     snv.all[i,'genome']=unlist(strsplit(as.character(snv.all[i,'scaffold']),"_"))[2]
   }
