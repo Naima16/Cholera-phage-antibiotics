@@ -17,4 +17,4 @@
    -  Redundancy analysis (RDA) with the most dominant species as a function of phages, antibiotics and patient's metadata.
    -  Multiple Factor Analysis (MFA) between the most dominant species and all the antibiotics resistance genes predicted with deepARG.
      
-* Indicator species analysis to associate species with different sickness stages.
+* Indicator species analysis to associate species with different dehydration states.
