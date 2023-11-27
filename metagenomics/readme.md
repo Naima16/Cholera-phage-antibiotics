@@ -7,3 +7,5 @@
 * Diversity with inStrain 1.5.7
 * Gene annotation with prodigal v2.6.3-EggNOG-Mapper v2
 * Antibiotic resistance genes prediction with DeepArg v1.0.2
+* Genes prediction with prodigal v2.6.3 and their annotations with eggNOG-Mapper v2 and eggNOG database v2.
+* Phage identification with iPhoP 1.3.1.
