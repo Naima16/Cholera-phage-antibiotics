@@ -2,7 +2,6 @@
 
 #### Content :
 
-* Post-inStrain filtering to remove false positive SNVs (adapted from Garud and Good et al. 2019)
 * Figures: Code to generate figures and supplementary figures.
   
 * GAMs : Code for the generalized additive mixed models with :
@@ -18,3 +17,4 @@
    -  Multiple Factor Analysis (MFA) between the most dominant species and all the antibiotics resistance genes predicted with deepARG.
      
 * Indicator species analysis to associate species with different dehydration states.
+* Post-inStrain filtering to remove false positive SNVs (adapted from Garud and Good et al. 2019)
