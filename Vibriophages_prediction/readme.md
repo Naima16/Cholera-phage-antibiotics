@@ -1,1 +1,3 @@
-Phage detection within metagenomics assemblies.
+Phage identification from metagenomic assemblies. This script process iPhoP output.
+
+
