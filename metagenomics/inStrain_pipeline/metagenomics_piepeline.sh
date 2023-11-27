@@ -212,14 +212,12 @@ done
 parse_stb.py --reverse -f complete_only_MAGs/dereplicated_genomes/* -o representitve_genomes.stb
 
 ## Prodigal
-prodigal -i allGenomes_v1/all_MAGs.fa   -d all_MAGs_genes_v1.fna -o prodigal_bact.out
-prodigal -i allGenomes_v1/phages.fa -d  phages_v1.fna -o prodigal_phages.out -p meta
-prodigal -i allGenomes_v1/all_MAGs_phage.fa   -d all_MAGs_phage_genes_v1.fna -o prodigal_bact_phage.out
+prodigal -i ~/all_MAGs_phage.fa  -d  ~/all_MAGs_phage_genes.fna -o ~/prodigal_bact_phage.out
 
 ## run inStrain
 cd sam_Instrain_v1
 for i in *sam
 prefix=$(basename $i sam)
 do
-inStrain profile  $i  allGenomes_v1/all_MAGs_phage.fa  -o  Instrain_profiles_v1/IS_${prefix} -p 6  -g prodigal/all_MAGs_phage_genes_v1.fna  -s  representitve_genomes_phage.stb  --database_mode
+inStrain profile  $i  ~/allGenomes_v1/all_MAGs_phage.fa  -o  Instrain_profiles_v1/IS_${prefix} -p 6  -g ~/all_MAGs_phage_genes.fna  -s  representitve_genomes_phage.stb  --database_mode
 done
