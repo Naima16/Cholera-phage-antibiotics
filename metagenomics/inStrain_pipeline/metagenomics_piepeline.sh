@@ -1,7 +1,11 @@
 
-#####
-###### Scripts
+##### 
+###### kraken and inStrain pipelines Scripts
+###### NM nov 2023
+
+
 ### kraken on raw reads
+
 kraken2-build --db=~/kraken2_db --threads=10
 cd  ~/fastq_reads
 
