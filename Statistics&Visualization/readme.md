@@ -2,6 +2,7 @@
 
 #### Content :
 
+* Post-inStrain filtering to remove false positive SNVs (adapted from Garud and Good et al. 2019
 * Figures: Code to generate figures and supplementary figures.
   
 * GAMs : Code for the generalized additive mixed models with :
