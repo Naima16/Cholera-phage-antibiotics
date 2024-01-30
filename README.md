@@ -2,7 +2,6 @@
 [![DOI](https://zenodo.org/badge/651234922.svg)](https://zenodo.org/doi/10.5281/zenodo.10573866)
 
 Code for metagenomics pipeline, statistics and figures in Madi et al. 2023
- https://doi.org/10.1101/2023.06.14.544933
 
 All sequencing data analyzed in this paper are deposited in the NCBI SRA under BioProject PRJNA976726 
 
