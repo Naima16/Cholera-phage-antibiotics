@@ -47,37 +47,43 @@ summary(mod1)
 
 save(mod1,file='mod1.RData')
 
-mod4=gam(mean_freq ~ s(ICP1,by=ICE.by.mut)+
-                   s(AZI,by=mutation_type)+ 
-                   s(CIP,by=mutation_type),
+mod2=gam(mean_freq ~ s(ICP1,by=ICE.by.mut)+
+                     s(AZI,by=ICE.by.mut),
+                     data=df.all.sxt1,
+                     family=betar(link='logit'))
+summary(mod4)
+
+mod3=gam(mean_freq ~ s(ICP1,by=ICE.by.mut)+
+                   s(AZI,by= ICE.by.mut)+ 
+                   s(CIP,by= ICE.by.mut),
                     data=df.all.sxt1,
                     family=betar(link='logit'))
 summary(mod4)
 
-mod2=gam(mean_freq ~ s(ICP1,by=ICE.by.mut)+
-         s(AZI,by=mutation_type)+ 
-         s(CIP,by=mutation_type)+
-         DOX*mutation_type,
+mod4=gam(mean_freq ~ s(ICP1,by=ICE.by.mut)+
+         s(AZI,by= ICE.by.mut)+ 
+         s(CIP,by= ICE.by.mut)+
+         DOX* ICE.by.mut,
        data=df.all.sxt1,
        family=betar(link='logit'))
 summary(mod2)
 
-mod3=gam(mean_freq ~ s(ICP1,by=ICE.by.mut)+
-         s(AZI,by=mutation_type)+ 
-         s(CIP,by=mutation_type)+
-         DOX*mutation_type+
-         te(ICP1,AZI,by=mutation_type)+
-         te(ICP1,CIP,by=mutation_type)+
-         DOX:ICP1:mutation_type,
+mod5=gam(mean_freq ~ s(ICP1,by=ICE.by.mut)+
+         s(AZI,by= ICE.by.mut)+ 
+         s(CIP,by= ICE.by.mut)+
+         DOX* ICE.by.mut +
+         te(ICP1,AZI,by= ICE.by.mut)+
+         te(ICP1,CIP,by= ICE.by.mut)+
+         DOX:ICP1: ICE.by.mut,
        data=df.all.sxt1,
        family=betar(link='logit'))
-summary(mod3)
+summary(mod5)
 
 
-
-AICtab(mod4,mod2,mod3,mod1)
+AICtab(mod1,mod2,mod3,mod4,mod5)
 
 gam.check(mod1,pch=19,cex=.3,rl.col=2, rep.col="steelblue",old.style=FALSE,pages=1)
+
 
 ### plot
 pdf('mod1_plot.pdf',width = 4.7,height = 3,pointsize = 8)
