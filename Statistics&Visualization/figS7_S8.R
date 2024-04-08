@@ -54,8 +54,8 @@ df.arg.antib.clust=df.all1[df.all1$ARG_group %in% c('MEXI','TET34','TET35','DFRA
 
 df.arg.antib.clust=df.arg.antib.clust %>%
   mutate(CIP_fact = case_when(
-    CIP< 0.063 ~ "ND",
-    CIP >= 0.063 ~ "D",
+    CIP< 0.016 ~ "ND",
+    CIP >= 0.016 ~ "D",
   ))
 
 df.arg.antib.clust.vc=df.arg.antib.clust[df.arg.antib.clust$Vc_reads>0,]
@@ -79,8 +79,8 @@ cip_anaerobic
 ## cip aerobic
 df.arg.antib.clust.vc=df.arg.antib.clust.vc %>%
   mutate(CIP_fact_aerobic = case_when(
-    CIP< 0.016 ~ "ND",
-    CIP >= 0.016 ~ "D",
+    CIP< 0.004 ~ "ND",
+    CIP >= 0.004 ~ "D",
   ))
 
 cip_erobic=ggplot(df.arg.antib.clust.vc , aes(x = CIP_fact_aerobic,y=log10(Vc_Normalized_read))) +
@@ -98,9 +98,12 @@ cip_erobic=ggplot(df.arg.antib.clust.vc , aes(x = CIP_fact_aerobic,y=log10(Vc_No
         strip.text = element_text(size = 5))#+
 cip_erobic
 
-pdf('S8.pdf',width = 5.5,height = 6,pointsize = 0.5)
-plot_grid(cip_anaerobic,cip_erobic,ncol=2,nrow=1,labels = c('A','B'),label_size = 8)######, rel_heights=c(5,2),rel_widths =c(2,0.5))
-dev.off()
+### exactly the same results for aerobic and anaerobic
+ggsave('FigS8.pdf',width = 3.7,height = 6)
+
+#pdf('S8.pdf',width = 5.5,height = 6,pointsize = 0.5)
+#plot_grid(cip_anaerobic,cip_erobic,ncol=2,nrow=1,labels = c('A','B'),label_size = 8)######, rel_heights=c(5,2),rel_widths =c(2,0.5))
+#dev.off()
 
 ##
 
