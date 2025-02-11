@@ -7,7 +7,8 @@
 * ICP1_snv.filter3.biallelic.csv : filtered SNVs within ICP1
 * cov.all.csv : Coverage profile from inStrain
 * merge_quant_subtype_deepARG.csv : antibiotics resistance genes from deepARG
-* metadata.csv : patient metadata + antibiotic concentration from mass spectrometry (µg/ml)
+* metadata.csv : patient metadata 
+* metadata_all.csv : patient metadata + antibiotic concentration from mass spectrometry (µg/ml)
 * mutatorstatus.csv : mutator/non mutator status 
 
 
