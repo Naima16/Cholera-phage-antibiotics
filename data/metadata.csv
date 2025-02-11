@@ -1,4 +1,4 @@
-Sample,Area_Code,Sex,Age_years,Duration_of_Dirrhoea_Heures,Dehydration_Status,Vomiting,Nature_of_Stool,Collection_Month
+Sample,Area_Code,Sex,Age_years,Duration_of_Dirrhoea_Hours,Dehydration_Status,Vomiting,Nature_of_Stool,Collection_Month
 D02182111,2,1, 7.00,24,2,1,Rice_Watery,2018-03
 D02182112,2,2,35.00,24,2,1,Rice_Watery,2018-03
 D02182145,2,1, 0.83,24,1,2,Loose_Watery,2018-04
