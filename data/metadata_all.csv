@@ -1,3 +1,8 @@
+
+dehydration status: 1: mild, 2: moderate, 3:severe 
+sex: 1: male, 2: female 
+AZI, CIP and DOX are concentrations of Azithromycin, Ciprofloxacin and Doxycycline in ug/ml
+
 Sample,Area_Code,Sex,Age_years,Duration_of_Dirrhoea_Hours,Dehydration_Status,Vomiting,Nature_of_Stool,Collection_Month,AZI,CIP,DOX
 1274300,icddrb,1,23.00,1,3,1,Watery,2018-03,0,0,0
 1274767,icddrb,1,42.00,10,3,1,Watery,2018-03,0,16.94501351,0
