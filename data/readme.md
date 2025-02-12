@@ -7,8 +7,8 @@
 * ICP1_snv.filter3.biallelic.csv : filtered SNVs within ICP1
 * cov.all.csv : Coverage profile from inStrain
 * merge_quant_subtype_deepARG.csv : antibiotics resistance genes from deepARG
-* metadata.csv : patient metadata (dehydration status: 1: mild, 2: moderate, 3:severe; sex: 1: male, 2: female; AZI, CIP and DOX are concentrations of Azithromycin, Ciprofloxacin and Doxycycline in ug/ml)
-* metadata_all.csv : patient metadata + antibiotic concentration from mass spectrometry (µg/ml)
+* metadata.csv : patient metadata (dehydration status: 1: mild, 2: moderate, 3:severe; sex: 1: male, 2: female)
+* metadata_all.csv : patient metadata + antibiotic concentration from mass spectrometry (µg/ml): AZI:Azithromycin, CIP:Ciprofloxacin and DOX:Doxycycline
 * mutatorstatus.csv : mutator/non mutator status 
 
 
